@@ -1,0 +1,29 @@
+{
+  "name": "thin-film-lab",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test:physics": "esbuild test/physics.test.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/tmm-test.mjs && node node_modules/.cache/tmm-test.mjs",
+    "test:interp": "esbuild test/interpolation.test.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/interp-test.mjs && node node_modules/.cache/interp-test.mjs",
+    "test:examples": "esbuild test/examples.test.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/examples-test.mjs && node node_modules/.cache/examples-test.mjs",
+    "test:smoke": "esbuild test/smoke.test.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/smoke.mjs --external:vite --external:vue --external:@vue/server-renderer --external:jsdom && node node_modules/.cache/smoke.mjs",
+    "test": "npm run test:physics && npm run test:interp && npm run test:examples && npm run test:smoke"
+  },
+  "dependencies": {
+    "mathjs": "^13.2.0",
+    "plotly.js-dist-min": "^2.35.2",
+    "vue": "^3.5.12"
+  },
+  "devDependencies": {
+    "@types/plotly.js": "^3.0.14",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "jsdom": "^29.1.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vue-tsc": "^3.3.12"
+  }
+}
